@@ -30,8 +30,11 @@
         <p>
           <input type="text" name="something">
           <input type="submit" value="Submit">
+          <!--Add a jQuery field here to scan for keyword entered for Submit value-->
          </p> 
           <button style="font-size: 18px">Update tweetles</button>
+         <p class="happenings" id="tweetles">
+           
 
       </div>
 
@@ -44,21 +47,23 @@
     <section>
       <script>
 
-        // $(document).ready(function(){
-        //   ()
-        //   var $body = $('body');
-        //   $body.html('');
+        $(document).ready(function(){
+          $('.happenings').on('click', 'button', function(event) {
+            event.preventDefault();
+            var $body = $('.happenings #tweetles');
+            $body.html('');
 
-        //   var index = streams.home.length - 1;
-        //   while(index >= 0){
-        //     var tweet = streams.home[index];
-        //     var $tweet = $('<div></div>');
-        //     $tweet.text('@' + tweet.user + ': ' + tweet.message);
-        //     $tweet.appendTo($body);
-        //     index -= 1;
-        //   }
+            var index = streams.home.length - 1;
+            while(index >= 0){
+              var tweet = streams.home[index];
+              var $tweet = $('<div></div>');
+              $tweet.text('@' + tweet.user + ': ' + tweet.message);
+              $tweet.appendTo($body);
+              index -= 1;
+            }
+          });
 
-        // });
+        });
 
       </script>
      </section> 
