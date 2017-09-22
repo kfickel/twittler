@@ -3,29 +3,31 @@
 <html>
   <head>
     <title>Twitter</title>
+    <link rel="stylesheet" href="style.css">
     <script src="./index_files/jquery.js"></script>
     <script src="./index_files/data_generator.js"></script>
   </head>
 
 
-  <body style="background-color: #ADD8E6; margin: 0px;">
+  <body>
 
   <!-- Navigation -->
     <section class="Twittler" id="Twitter">
-      <div style="background-color: #333; padding: 5px;" class="topnav" id="myTopnav">
-        <a style="color: white; margin-left: 10px; text-decoration: none; font-weight: bold; font-family: Comic Sans MS; font-size: 36px; text-shadow: 2px 2px 4px #87CEFA">twittler</a>
+      <div class="topnav" id="myTopnav">
+        <a id="twittlerheader">twittler</a>
+        <a id="searchbar">
+          <input id="search" type="submit" value="Submit">
+          <input id="search" type="text" name="search" >
+          <label id="searchtwittler" style="color: #87CEFA;float:right;margin: 2px;" for="search">Search Twittler</a>
         </div>
-       <div class="searchtwittler" id="mySearch">
-        <a style="color: #87CEFA;">Search Twittler</a>
-       </div>
       
     </section>
 
     <!--Twitter feed-->
-    <section>
+    <section style="margin-top: 10px">
       <div style="background-color: #F5F5F5;border-radius: 5px;background-color: white; margin-left: 10px; float: left; padding: 5px; width: 325px; " class="happenings">
         <p style="color: #778899; font-size: 22px;">
-          <label for="">What's Happening?</label>
+          <label for="what's happening">What's Happening?</label>
         </p>
         <p>
           <input type="text" name="something">
@@ -34,6 +36,7 @@
          </p> 
           <button style="font-size: 18px">Update tweetles</button>
          <p class="happenings" id="tweetles">
+          <!--Need to refresh tweetles with each click-->
            
 
       </div>
