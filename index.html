@@ -48,7 +48,12 @@
           <!--user-->
         <ul>  
           <li id="user">
-            <h1>New User</h1>
+            <p>
+              <label for="userheader">Viewing twittler as:</label>
+            </p> 
+            <p>
+              <label for="user">twittler visitor</label>
+            </p>
           </li>
          </ul> 
              
@@ -66,15 +71,18 @@
             event.preventDefault();
             var $body = $('#tweetles');
             $body.html('');
-
-            var index = streams.home.length - 1;
-            while(index >= 0){
-              var tweet = streams.home[index];
-              var $tweet = $('<div></div>');
-              $tweet.text('@' + tweet.user + ': ' + tweet.message);
-              $tweet.appendTo($body);
-              index -= 1;
-            }
+              while($(this).hasClass('tweetles').length >= 0){
+                $(this).removeClass('tweetles');
+              }
+              var index = streams.home.length - 1;
+              while(index >= 0){
+                var tweet = streams.home[index];
+                var $tweet = $('<div class="tweetles"></div>');
+                $tweet.text('@' + tweet.user + ': \n' + tweet.message + '\n' + Math.floor(Date.now()/1000));
+                $tweet.appendTo($body);
+                index -= 1;
+              }
+          
           });
 
         });
