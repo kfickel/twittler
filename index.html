@@ -24,9 +24,9 @@
     </section>
 
     <!--Twittler feed-->
-    <section id="twittlerfeed" style="margin-top: 10px">
-      <div style="background-color: #F5F5F5;border-radius: 5px;background-color: white; margin-left: 10px; float: left; padding: 5px; width: 325px; " class="happenings">
-        <p style="color: #778899; font-size: 22px;">
+    <section id="twittlerfeed" >
+      <div class="happenings">
+        <p>
           <label for="what's happening">What's Happening?</label>
         </p>
         <p>
@@ -34,8 +34,8 @@
           <input type="submit" value="Submit">
           <!--Add a jQuery field here to scan for keyword entered for Submit value-->
          </p> 
-          <button style="font-size: 18px">Update tweetles</button>
-         <p class="happenings" id="tweetles">
+          <button for="tweetles">Update tweetles</button>
+         <p id="tweetles">
           <!--Need to refresh tweetles with each click-->
            
 
@@ -53,7 +53,7 @@
         $(document).ready(function(){
           $('.happenings').on('click', 'button', function(event) {
             event.preventDefault();
-            var $body = $('.happenings #tweetles');
+            var $body = $('#tweetles');
             $body.html('');
 
             var index = streams.home.length - 1;
