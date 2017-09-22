@@ -11,6 +11,7 @@ input[type="text"] {
 }
 
 ul {
+	padding: 0;
 	list-style-type: none;
 }
 
@@ -24,6 +25,7 @@ body
 body {
 	background-color: #ADD8E6;
 	margin: 0px;
+	font-family: Sans-serif;
 }
 
 /*
@@ -59,22 +61,38 @@ Twittler Feed
 
 section#twittlerbody {
 	margin-top: 10px;
+	text-align: center;
 }
 
 .happenings {
 	background-color: #F5F5F5;
 	border-radius: 5px;
 	background-color: white; 
-	margin-left: 10px; 
-	float: left; 
-	padding: 5px; 
-	width: 325px;
+	margin-left: 50px;
+	float: left;  
+	width: 700px;
+	border-style: solid;
+	border-width: thin;
+}
+
+label[for="viewpoint"] {
+	color: black;
+	font-size: 30px;
+	font-weight: bold;
+	text-shadow: 2px 2px 4px #ADD8E6;
+
 }
 
 button[for="tweetles"] {
 	font-size: 16px
 }
 
+.tweetles {
+	border-top-style: solid;
+	border-width: thin;
+	height: 30px;
+	padding: 3px;
+}
 
 /*
 ================================
@@ -86,29 +104,30 @@ li#user {
 	background-color: #F5F5F5; 
 	padding: 5px; 
 	border-radius: 5px; 
-	width: 215px; 
+	width: 350px; 
 	font-size: 20px; 
 	background-color: white; 
-	margin-right: 10px; 
+	margin-right: 50px; 
+	border-style: solid;
+	border-width: thin;
 }
 
 label[for="userheader"] {
 	font-size: 24px	
 	font-weight: none;
-	font-family: Comic Sans MS;
 }
 
 label[for="user"] {
+	display: block;
 	font-size: 20;
 	text-shadow: 2px 2px 2px #87CEFA;
 	font-weight: bold;
 	border-style: inset;
 	text-align: center;
-	font-family: Comic Sans MS;
 }
 
 label[for="userhandle"] {
+	display: block;
 	font-size: 16;
 	text-align: center;
-	font-family: Comic Sans MS;
 }
