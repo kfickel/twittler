@@ -1,14 +1,13 @@
 /*
 ================================
-Typography
+Overall Styles
 ================================
 */
 
-h1 {
-	
-}
-h2 {
-	
+input[type="text"] {
+	width: 175px;
+	height: 25px;
+	font-size: 18px;
 }
 
 ul {
@@ -52,12 +51,6 @@ input#search {
 	margin: 2px;
 }
 
-label#search {
-	color: #87CEFA;
-	float: right;
-	margin: 2px;
-}
-
 /*
 ================================
 Twittler Feed
@@ -76,11 +69,6 @@ section#twittlerbody {
 	float: left; 
 	padding: 5px; 
 	width: 325px;
-}
-
-label[for="what's happening"] {
-	color: #778899; 
-	font-size: 22px;
 }
 
 button[for="tweetles"] {
@@ -115,4 +103,12 @@ label[for="user"] {
 	text-shadow: 2px 2px 2px #87CEFA;
 	font-weight: bold;
 	border-style: inset;
+	text-align: center;
+	font-family: Comic Sans MS;
+}
+
+label[for="userhandle"] {
+	font-size: 16;
+	text-align: center;
+	font-family: Comic Sans MS;
 }
