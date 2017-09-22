@@ -5,14 +5,10 @@ Typography
 */
 
 h1 {
-	background-color: #F5F5F5; 
-	padding: 5px; 
-	border-radius: 5px; 
-	width: 215px; 
-	font-size: 20px; 
-	background-color: white; 
-	margin-right: 10px; 
-	float: right;
+	
+}
+h2 {
+	
 }
 
 ul {
@@ -88,8 +84,9 @@ label[for="what's happening"] {
 }
 
 button[for="tweetles"] {
-	font-size: 18px
+	font-size: 16px
 }
+
 
 /*
 ================================
@@ -98,4 +95,24 @@ User
 */
 li#user {
 	float: right;
+	background-color: #F5F5F5; 
+	padding: 5px; 
+	border-radius: 5px; 
+	width: 215px; 
+	font-size: 20px; 
+	background-color: white; 
+	margin-right: 10px; 
+}
+
+label[for="userheader"] {
+	font-size: 24px	
+	font-weight: none;
+	font-family: Comic Sans MS;
+}
+
+label[for="user"] {
+	font-size: 20;
+	text-shadow: 2px 2px 2px #87CEFA;
+	font-weight: bold;
+	border-style: inset;
 }
