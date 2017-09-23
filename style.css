@@ -26,6 +26,7 @@ body {
 	background-color: #ADD8E6;
 	margin: 0px;
 	font-family: Sans-serif;
+	line-height: .75;
 }
 
 /*
@@ -75,7 +76,7 @@ section#twittlerbody {
 	border-width: thin;
 }
 
-label[for="viewpoint"] {
+#viewpoint {
 	color: black;
 	font-size: 30px;
 	font-weight: bold;
@@ -92,6 +93,9 @@ button[for="tweetles"] {
 	border-width: thin;
 	height: 15px;
 	padding: 3px;
+	height: 75px;
+}
+.tweetles#username {
 	text-decoration: underline;
 }
 
