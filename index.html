@@ -36,6 +36,8 @@
              <p>
               <li id="tweetles"> 
               </li>
+              <li id="specificuser">
+              </li>
              </p> 
             </div> 
               <!--Need to refresh tweetles with each click-->
@@ -78,24 +80,26 @@
                var timestamp = JSON.stringify(Math.floor(Date.now()/1000));
                var tweet = streams.home[index];
                var $tweet = $('<p id="tweet"></p>');
-               var $twittlename = $('<div class="tweetles" id="tweet"></div>');
-               var $time = $('<span id="time"></span>');
+               var $twittlename = $('<div class="tweetles" id="username"></div>');
+               var $time = $('<p id="time"></p>');
                $tweet.text(tweet.message);
                $time.text('timestamp: ' + timestamp);
                $twittlename.text('@' + tweet.user + ': \n');
                $twittlename.appendTo($body);
                $tweet.appendTo($twittlename);
                $time.appendTo($twittlename);
-               //$tweet.appendTo($body);
-               //$time.appendTo($body);
                index -= 1;
               }
             $("#tweetles").hide();
             $('.update').on('click', 'button', function(event) {
+              $("#specificuser").empty();
               $("#tweetles").show();
+              //$("#specificuser").hide();
             });
 
-         // });
+        //  $('.update').on('click', 'button', function(event) {   
+
+        // });
 
                
 
@@ -104,22 +108,31 @@
       </script>
       <script>
       $(document).ready(function() {
-         $(".tweetles").on('click', function() {
-              console.log($(this).text());
+         $(".tweetles#username").on('click', function() {
+              //$("#specificuser").empty();
+              var clickedUser = $(this).clone().children().remove().end().text();
+              $(".tweetles#username").each(function(){
+                 $(this).addClass($(this).clone().children().remove().end().text());
+                  if(clickedUser === $(this).clone().children().remove().end().text()){
+                    $(this).clone().appendTo("#specificuser");
+                  }
+              });
               $('#tweetles').hide();
-              $(this).addClass($(this).text());
-              $('p#tweet').addClass($(this).text());
+              //$(this).show();
+              console.log($(this).clone().children().remove().end().text());
+              //$('#tweetles').hide();
+              //$(this).addClass($(this).clone().children().remove().end().text());
               // if($(this).val() === (".tweetles").val()){
               //   $('.tweetles').show();
               // }
           });
-          $(".tweetles").on('mouseenter', function() {
-            $(this).addClass('highlight');
-          });
+          // $(".tweetles").on('mouseenter', function() {
+          //   $(this).addClass('highlight');
+          // });
 
-          $(".tweetles").on('mouseleave', function() {
-            $(this).removeClass('highlight');
-          })
+          // $(".tweetles").on('mouseleave', function() {
+          //   $(this).removeClass('highlight');
+          // })
       })
       </script>
      </section> 
