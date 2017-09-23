@@ -6,7 +6,7 @@ Overall Styles
 
 input[type="text"] {
 	width: 175px;
-	height: 25px;
+	height: 15px;
 	font-size: 18px;
 }
 
@@ -101,6 +101,20 @@ button[for="tweetles"] {
 
 .highlight {
 	background-color: #F5F5F5;
+}
+
+#username {
+	font-weight: bold;
+}
+
+#tweet{
+	font-weight: normal;
+}
+
+#time {
+	font-weight: normal;
+	color: #708090;
+	font-style: italic;
 }
 
 
