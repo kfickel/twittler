@@ -49,7 +49,7 @@ a#twittlerheader {
 	text-shadow: 2px 2px 4px #87CEFA;
 }
 
-input#search {
+input {
 	float: right;
 	margin: 2px;
 }
@@ -96,8 +96,9 @@ button[for="tweetles"] {
 	height: 75px;
 }
 .tweetles#username {
-	text-decoration: underline;
+	text-decoration: none;
 }
+
 
 /*
 ================================
