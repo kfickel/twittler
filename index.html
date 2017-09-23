@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style.css">
     <script src="./index_files/jquery.js"></script>
     <script src="./index_files/data_generator.js"></script>
-    <script src="application.js"></script>
   </head>
 
 
@@ -29,19 +28,16 @@
         <ul>
           <!--What's Happening-->
           <li id="whatshappening">
-            <!-- <p>
-              <input type="text" id="" placeholder="What's Happening?">
-              <input type="submit" value="Go"> -->
-              <!--Add a jQuery field here to scan for keyword entered for Submit value-->
-             <!--</p> -->
              <p>
-              <label for="viewpoint">twittler feed</label>
+              <label id="viewpoint">twittler feed</label> 
              </p>
+            <div class="update"> 
              <button for="tweetles">Update tweetles</button>
              <p>
               <li id="tweetles"> 
               </li>
              </p> 
+            </div> 
               <!--Need to refresh tweetles with each click-->
              </p> 
           </li>
@@ -73,32 +69,58 @@
       <script>
 
         $(document).ready(function(){
-          $('.happenings').on('click', 'button', function(event) {
+          //$('.update').on('click', 'button', function(event) {
             event.preventDefault();
             var $body = $('#tweetles');
             $body.html('');
-              while($(this).hasClass('tweetles').length >= 0){
-                $(this).removeClass('tweetles');
+            var index = streams.home.length - 1;
+            while(index >= 0){
+               var timestamp = JSON.stringify(Math.floor(Date.now()/1000));
+               var tweet = streams.home[index];
+               var $tweet = $('<p id="tweet"></p>');
+               var $twittlename = $('<div class="tweetles" id="tweet"></div>');
+               var $time = $('<span id="time"></span>');
+               $tweet.text(tweet.message);
+               $time.text('timestamp: ' + timestamp);
+               $twittlename.text('@' + tweet.user + ': \n');
+               $twittlename.appendTo($body);
+               $tweet.appendTo($twittlename);
+               $time.appendTo($twittlename);
+               //$tweet.appendTo($body);
+               //$time.appendTo($body);
+               index -= 1;
               }
-              var index = streams.home.length - 1;
-              while(index >= 0){
-                var tweet = streams.home[index];
-                var $tweet = $('<p></p>');
-                var $twittlename = $('<div class="tweetles"></div>');
-                var $time = $('<p></p>');
-                $twittlename.text('@' + tweet.user + ': \n');
-                $tweet.text(tweet.message);
-                $time.text('timestamp: ' + Math.floor(Date.now()/1000));
-                $twittlename.appendTo($body);
-                $tweet.appendTo($body);
-                $time.appendTo($body);
-                index -= 1;
-              }
-          
-          });
+            $("#tweetles").hide();
+            $('.update').on('click', 'button', function(event) {
+              $("#tweetles").show();
+            });
+
+         // });
+
+               
 
         });
 
+      </script>
+      <script>
+      $(document).ready(function() {
+         $(".tweetles").on('click', function() {
+              console.log($(this).text());
+              $('#tweetles').hide();
+              $(this).addClass($(this).text());
+              $('p#tweet').addClass($(this).text());
+              // if($(this).val() === (".tweetles").val()){
+              //   $('.tweetles').show();
+              // }
+          });
+          $(".tweetles").on('mouseenter', function() {
+            $(this).addClass('highlight');
+          });
+
+          $(".tweetles").on('mouseleave', function() {
+            $(this).removeClass('highlight');
+          })
+      })
       </script>
      </section> 
   </body>
