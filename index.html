@@ -83,9 +83,15 @@
               var index = streams.home.length - 1;
               while(index >= 0){
                 var tweet = streams.home[index];
-                var $tweet = $('<div class="tweetles"></div>');
-                $tweet.text('@' + tweet.user + ': \n' + tweet.message + '\n' + Math.floor(Date.now()/1000));
+                var $tweet = $('<p></p>');
+                var $twittlename = $('<div class="tweetles"></div>');
+                var $time = $('<p></p>');
+                $twittlename.text('@' + tweet.user + ': \n');
+                $tweet.text(tweet.message);
+                $time.text('timestamp: ' + Math.floor(Date.now()/1000));
+                $twittlename.appendTo($body);
                 $tweet.appendTo($body);
+                $time.appendTo($body);
                 index -= 1;
               }
           
