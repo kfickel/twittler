@@ -90,8 +90,9 @@ button[for="tweetles"] {
 .tweetles {
 	border-top-style: solid;
 	border-width: thin;
-	height: 30px;
+	height: 15px;
 	padding: 3px;
+	text-decoration: underline;
 }
 
 /*
