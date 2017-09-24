@@ -1,4 +1,26 @@
+//import timeago from 'timeago.js';
+//var timeago = require("timeago.js");
 $(document).ready(function() {
+  var $body = $('#tweetles');
+  $body.html('');
+  var index = streams.home.length - 1;
+    while (index >= 0){
+    var timestamp = new Date();
+    var tweet = streams.home[index];
+    var $tweet = $('<p id="tweet"></p>');
+    var $twittlename = $('<div class="tweetles" id="username"></div>');
+    var $time = $('<p id="time"></p>');
+    $tweet.text(tweet.message);
+    $time.text(' timestamp ' + timestamp.getHours() + ' : ' + timestamp.getMinutes() + ' : ' + timestamp.getSeconds());
+    $twittlename.text('@' + tweet.user + ': \n');
+    $twittlename.prependTo($body);
+    $tweet.appendTo($twittlename);
+    $time.appendTo($twittlename);
+    index -= 1;
+  }     
+
+
+
   var hashObj={};
   var objLength = 0;
   $(".tweetles#username").each(function(){
@@ -46,11 +68,11 @@ $(document).ready(function() {
   }
 
   for(var key in sortedHashObj) {
-    console.log('j');
     var $trend = $('<div class="trend"></div>');
     $trend.text('#' + key + ' - ' + sortedHashObj[key]);
     $trend.appendTo($('#trends'));
   }
+
 
 
   $('.update').on('click', 'button', function(event) {
@@ -61,7 +83,9 @@ $(document).ready(function() {
   }); 
 
 
-  $(".tweetles#username").on('click', function() {
+
+  $("#tweetles").on('click', ".tweetles#username", function() {
+    $(this).removeClass("highlight");
     var clickedUser = $(this).clone().children().remove().end().text();
     $("#viewpoint").text(clickedUser);
     $(".tweetles#username").each(function(){
@@ -73,13 +97,19 @@ $(document).ready(function() {
     $('#tweetles').hide();
   });
 
-  $(".tweetles#username").on('mouseenter', function() {
+
+
+  $("#tweetles").on('mouseenter', ".tweetles#username", function() {
     $(this).addClass("highlight");
   });
 
-  $(".tweetles#username").on('mouseleave', function() {
+
+
+  $("#tweetles").on('mouseleave', ".tweetles#username", function() {
     $(this).removeClass("highlight");
   });
+
+
 
   $("#searchbutton").on('click', function(){
     $('#tweetles').hide();
@@ -96,6 +126,21 @@ $(document).ready(function() {
          }
       }
     })
-  });     
+  }); 
 
-  });
+
+  $("#usertweetsubmit").on('click', function(){
+    var userTimestamp = new Date();
+    var userTweet = $("#usertweet").val();
+    var $usertweet = $('<p id="tweet"></p>');
+    var $usertwittlename = $('<div class="tweetles" id="username"></div>');
+    var $usertime = $('<p id="time"></p>');
+    $usertweet.text(userTweet);
+    $usertime.text(' timestamp ' + userTimestamp.getHours() + ' : ' + userTimestamp.getMinutes() + ' : ' + userTimestamp.getSeconds());
+    $usertwittlename.text( $("label[for='userhandle']").text() + ': \n');
+    $usertwittlename.prependTo($('#tweetles'));
+    $usertweet.appendTo($usertwittlename);
+    $usertime.appendTo($usertwittlename);
+  })    
+
+});
