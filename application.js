@@ -1,5 +1,3 @@
-//import timeago from 'timeago.js';
-//var timeago = require("timeago.js");
 $(document).ready(function() {
   var $body = $('#tweetles');
   $body.html('');
@@ -20,7 +18,8 @@ $(document).ready(function() {
   }     
 
 
-
+$("#twittlerbody").on("mouseover", function() {
+  $("#trends").empty();
   var hashObj={};
   var objLength = 0;
   $(".tweetles#username").each(function(){
@@ -72,10 +71,12 @@ $(document).ready(function() {
     $trend.text('#' + key + ' - ' + sortedHashObj[key]);
     $trend.appendTo($('#trends'));
   }
+});  
 
 
 
   $('.update').on('click', 'button', function(event) {
+    $("button[for='tweetles']").text('tweetles');
     $("#viewpoint").text('twittler feed');
     $("#searchresults").empty();
     $("#specificuser").empty();
@@ -85,6 +86,7 @@ $(document).ready(function() {
 
 
   $("#tweetles").on('click', ".tweetles#username", function() {
+    $("button[for='tweetles']").text('all tweetles');
     $(this).removeClass("highlight");
     var clickedUser = $(this).clone().children().remove().end().text();
     $("#viewpoint").text(clickedUser);
@@ -127,6 +129,7 @@ $(document).ready(function() {
       }
     })
   }); 
+
 
 
   $("#usertweetsubmit").on('click', function(){
