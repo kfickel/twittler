@@ -29,6 +29,10 @@ body {
 	line-height: .75;
 }
 
+section#twittlerbody {
+	width: 1300px;
+}
+
 /*
 ================================
 Top Navigation
@@ -84,6 +88,12 @@ section#twittlerbody {
 
 }
 
+input#usertweet {
+	float: none;
+	height: 20px;
+	width: 200px;
+}
+
 button[for="tweetles"] {
 	font-size: 16px
 }
@@ -123,6 +133,7 @@ button[for="tweetles"] {
 User
 ================================
 */
+
 li#user {
 	float: right; 
 	padding: 5px; 
