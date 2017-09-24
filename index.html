@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="./index_files/jquery.js"></script>
     <script src="./index_files/data_generator.js"></script>
+    <script src="timeago.js"></script>
   </head>
 
 
@@ -15,40 +16,38 @@
     <section class="Twittler" id="Twitter">
       <div class="topnav" id="myTopnav">
         <a id="twittlerheader">twittler</a>
-        <a id="searchbar">
+        <a id="searchbar"></a>
           <input id="searchbutton" type="submit" value="Go">
           <input id="search" type="text" placeholder="Search tweetles">
         </div>
-      
     </section>
 
     <!--Twittler body-->
     <section id="twittlerbody" >
       <div class="happenings">
+      <!--What's Happening-->
         <ul>
-          <!--What's Happening-->
-          <li id="whatshappening">
-             <p>
-              <label id="viewpoint">twittler feed</label> 
-             </p>
-            <div class="update"> 
-             <button for="tweetles">tweetles</button>
-             <p>
+           <p>
+             <label id="viewpoint">twittler feed</label> 
+          </p>
+          <div class="update"> 
+            <p>
+              <input id="usertweet" type="text" placeholder="What's happening?">
+              <button id="usertweetsubmit">submit</button> 
+            </p>
+            <button for="tweetles">tweetles</button>
+            <p>
               <li id="tweetles"> 
               </li>
               <li id="specificuser">
               </li>
               <li id="searchresults">
               </li>
-             </p> 
-            </div> 
-              <!--Need to refresh tweetles with each click-->
-             </p> 
-          </li>
-        </ul>  
+           </div> 
+        </ul> 
       </div> 
       <div>  
-          <!--user-->
+      <!--user-->
         <ul>  
           <li id="user">
             <p>
@@ -62,50 +61,21 @@
             </p>
           </li>
          </ul> 
-       </div>  
-       <div class="hashbody">  
-         <ul>
+      </div>  
+      <div class="hashbody"> 
+      <!--trends--> 
+        <ul>
           <li id="hashtrends">
             <p>
-              <label for="trendsheader">trending hashtags</label>
-             </p> 
-             <p>
-              <li id="trends"></li>
+              <label for="trendsheader">following hash trends</label>
+            </p> 
+            <p>
+             <li id="trends"></li>
             </p> 
            </li> 
          </ul>
-             
-
       </div>
-
     </section>  
-
-
-    <section>
-      <script>
-
-        $(document).ready(function(){
-            var $body = $('#tweetles');
-            $body.html('');
-            var index = streams.home.length - 1;
-              while (index >= 0){
-               var timestamp = new Date();
-               var tweet = streams.home[index];
-               var $tweet = $('<p id="tweet"></p>');
-               var $twittlename = $('<div class="tweetles" id="username"></div>');
-               var $time = $('<p id="time"></p>');
-               $tweet.text(tweet.message);
-               $time.text(' timestamp ' + timestamp.getHours() + ' : ' + timestamp.getMinutes() + ' : ' + timestamp.getSeconds());
-               $twittlename.text('@' + tweet.user + ': \n');
-               $twittlename.prependTo($body);
-               $tweet.appendTo($twittlename);
-               $time.appendTo($twittlename);
-               index -= 1;
-              }              
-        });
-
-      </script>
       <script src="application.js"></script>
-     </section> 
   </body>
 </html>
