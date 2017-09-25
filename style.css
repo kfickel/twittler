@@ -108,6 +108,12 @@ button[for="tweetles"] {
 	padding: 3px;
 	height: 75px;
 }
+
+#username {
+	border-top-style: solid;
+	border-width: thin;
+}
+
 .tweetles#username {
 	text-decoration: none;
 }
