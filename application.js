@@ -2,8 +2,9 @@ $(document).ready(function() {
   var $body = $('#tweetles');
   $body.html('');
   var index = streams.home.length - 1;
-    while (index >= 0){
-    var timestamp = new Date();
+  var alreadyTweetled = index + 1;
+  while (index >= 0){
+    var timestamp = streams.home[index].created_at;
     var tweet = streams.home[index];
     var $tweet = $('<p id="tweet"></p>');
     var $twittlename = $('<div class="tweetles" id="username"></div>');
@@ -18,7 +19,8 @@ $(document).ready(function() {
   }     
 
 
-$("#twittlerbody").on("mouseover", function() {
+
+$("body").on("mouseover", function() {
   $("#trends").empty();
   var hashObj={};
   var objLength = 0;
@@ -41,8 +43,9 @@ $("#twittlerbody").on("mouseover", function() {
         if(!hashObj[hashWord]){
           hashObj[hashWord] = 1;
           objLength++;
+        } else {
+          hashObj[hashWord]++;
         }
-        hashObj[hashWord]++;
       }
     }
   });
@@ -75,12 +78,29 @@ $("#twittlerbody").on("mouseover", function() {
 
 
 
-  $('.update').on('click', 'button', function(event) {
-    $("button[for='tweetles']").text('tweetles');
+  $(".update").on('click', "button", function(event) {
+    $("button[for='tweetles']").text('refresh tweetles');
     $("#viewpoint").text('twittler feed');
     $("#searchresults").empty();
     $("#specificuser").empty();
     $("#tweetles").show();
+    var newIndex = (streams.home.length - 1);
+    var save = newIndex; 
+    while(newIndex >= alreadyTweetled){
+    var timestamp = streams.home[alreadyTweetled].created_at;
+    var tweet = streams.home[alreadyTweetled];
+    var $tweet = $('<p id="tweet"></p>');
+    var $twittlename = $('<div class="tweetles" id="username"></div>');
+    var $time = $('<p id="time"></p>');
+    $tweet.text(tweet.message);
+    $time.text(' timestamp ' + timestamp.getHours() + ' : ' + timestamp.getMinutes() + ' : ' + timestamp.getSeconds());
+    $twittlename.text('@' + tweet.user + ': \n');
+    $twittlename.prependTo($body);
+    $tweet.appendTo($twittlename);
+    $time.appendTo($twittlename);
+    alreadyTweetled++;
+    }
+    alreadyTweetled = save + 1;
   }); 
 
 
@@ -93,7 +113,7 @@ $("#twittlerbody").on("mouseover", function() {
     $(".tweetles#username").each(function(){
       $(this).addClass($(this).clone().children().remove().end().text());
         if(clickedUser === $(this).clone().children().remove().end().text()){
-         $(this).clone().appendTo("#specificuser");
+         $(this).clone().removeClass('tweetles').appendTo("#specificuser");
         }
     });
     $('#tweetles').hide();
@@ -123,7 +143,7 @@ $("#twittlerbody").on("mouseover", function() {
          var tweetSearch= tweet.slice(i, i + searchResult.length);
          if(tweetSearch === searchResult){
            console.log(searchResult);
-           $(this).clone().appendTo("#searchresults");
+           $(this).clone().removeClass('tweetles').appendTo("#searchresults");
            i = tweet.length;
          }
       }
@@ -133,17 +153,8 @@ $("#twittlerbody").on("mouseover", function() {
 
 
   $("#usertweetsubmit").on('click', function(){
-    var userTimestamp = new Date();
-    var userTweet = $("#usertweet").val();
-    var $usertweet = $('<p id="tweet"></p>');
-    var $usertwittlename = $('<div class="tweetles" id="username"></div>');
-    var $usertime = $('<p id="time"></p>');
-    $usertweet.text(userTweet);
-    $usertime.text(' timestamp ' + userTimestamp.getHours() + ' : ' + userTimestamp.getMinutes() + ' : ' + userTimestamp.getSeconds());
-    $usertwittlename.text( $("label[for='userhandle']").text() + ': \n');
-    $usertwittlename.prependTo($('#tweetles'));
-    $usertweet.appendTo($usertwittlename);
-    $usertime.appendTo($usertwittlename);
+    window.visitor = $("label[for='user']").text();
+    writeTweet($("#usertweet").val());
   })    
 
 });
