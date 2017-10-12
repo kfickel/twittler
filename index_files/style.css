@@ -1,0 +1,23 @@
+/*
+================================
+Typography
+================================
+*/
+
+h1 {
+	color: blue;
+	float: left;
+	width: 120px;
+}
+
+/*
+================================
+body
+================================
+*/
+
+body {
+	background-color: white;
+	font-family: "Comic Sans MS";
+
+}
